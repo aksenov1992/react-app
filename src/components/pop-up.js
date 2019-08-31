@@ -22,8 +22,10 @@ export default class PopUp extends Component {
 
   onSubmitForm = (evt) => {
     evt.preventDefault();
-    this.props.add(this.state.title, this.state.url);
-    this.props.show();
+    if (this.state.title !== '' && this.state.url !== '') {
+      this.props.add(this.state.title, this.state.url);
+      this.props.show();
+    }
   };
 
 
