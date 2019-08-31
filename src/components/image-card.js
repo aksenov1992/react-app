@@ -15,7 +15,7 @@ export default class ImageCard extends Component {
 
   render() {
 
-    const cards = this.props.cards;
+    const cards = this.props.cards.cardData;
 
     const { show } = this.state;
     let classNames = 'button button--delete';
