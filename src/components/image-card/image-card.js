@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import './image-card.css';
+
 export default class ImageCard extends Component {
 
   state = {
@@ -10,6 +12,15 @@ export default class ImageCard extends Component {
     this.setState({
       showButton: true
     });
+  };
+
+  componentDidMount() {
+    this.setWindowsize();
+  };
+  setWindowsize = () => {
+    if (window.innerWidth > 750){
+      this.onImageClick();
+    }
   };
 
   render() {

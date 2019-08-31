@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 
-import HeaderPage from '../components/header-page';
-import ImageCard from '../components/image-card';
-import PopUp from '../components/pop-up';
+
+import HeaderPage from '../header-page';
+import ImageCard from '../image-card';
+import PopUp from '../pop-up';
 
 export default class Page extends Component {
 

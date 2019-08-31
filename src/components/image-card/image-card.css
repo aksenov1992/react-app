@@ -1,0 +1,49 @@
+.image-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 275px;
+  min-height: 225px;
+  margin: 0 auto;
+  margin-bottom: 40px;
+}
+
+.image-card__title {
+  border: 1px solid #979797;
+  text-align: center;
+  padding-top: 16px;
+  padding-bottom: 15px;
+}
+
+.image-card__pic {
+  height: 192px;
+}
+
+.button--delete {
+  position: absolute;
+  top: 49px;
+  height: 192px;
+  text-transform: none;
+  color: #be4b4b;
+  background-color: rgba(0, 0, 0, 0.7);
+  border: none;
+  border-radius: 0;
+}
+
+@media (min-width: 750px) {
+  .image-card {
+    min-width: 745px;
+    margin-bottom: 50px;
+  }
+
+  .image-card__pic {
+    height: 375px;
+  }
+
+  .button--delete {
+    position: static;
+    height: auto;
+    width: auto;
+    background-color: transparent;
+  }
+}
