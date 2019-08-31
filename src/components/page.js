@@ -16,19 +16,20 @@ export default class Page extends Component {
   }
 
   showPopUp = () => {
-    this.setState({
-      show: true
+    this.setState((state) => {
+      return {
+      show: !state.show
+      }
     });
   };
 
   render() {
-    console.log(this.state.show);
   return (
     <>
       <HeaderPage />
       <button className="button button--new" onClick= { this.showPopUp} >new</button>
       <ImageCard cards={this.state}/>
-      { this.state.show ? <PopUp /> : null }
+      { this.state.show ? <PopUp show={this.showPopUp}/> : null }
     </>
   )};
 }
