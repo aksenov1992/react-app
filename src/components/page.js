@@ -15,6 +15,8 @@ export default class Page extends Component {
     show : false
   }
 
+  newId = 10;
+
   showPopUp = () => {
     this.setState((state) => {
       return {
@@ -23,13 +25,34 @@ export default class Page extends Component {
     });
   };
 
+  addCard = (title, src) => {
+    const newCard = {
+      title: title,
+      src: src,
+      id: this.newId++
+    };
+
+    this.setState(({ cardData }) => {
+      const newData = [
+        ...cardData, newCard
+      ];
+
+      return {
+        cardData: newData,
+        show: this.showPopUp
+      }
+    });
+  };
+
   render() {
-  return (
-    <>
-      <HeaderPage />
-      <button className="button button--new" onClick= { this.showPopUp} >new</button>
-      <ImageCard cards={this.state}/>
-      { this.state.show ? <PopUp show={this.showPopUp}/> : null }
-    </>
-  )};
+
+    return (
+      <>
+        <HeaderPage />
+        <button className="button button--new" onClick= {this.showPopUp} >new</button>
+        <ImageCard cards={this.state}/>
+        { this.state.show ? <PopUp show={this.showPopUp} add={this.addCard}/> : null }
+      </>
+    )
+  };
 }
