@@ -3,47 +3,29 @@ import React, { Component } from 'react';
 export default class ImageCard extends Component {
 
   state = {
-    show: false
+    showButton: false
   }
 
   onImageClick = () => {
     this.setState({
-      show: true
+      showButton: true
     });
   };
 
-
   render() {
 
-    const cards = this.props.cards.cardData;
-
-    const { show } = this.state;
-    let classNames = 'button button--delete';
-
-    if (show) {
-      classNames += ' show-button';
-    }
-
-    let element = cards.map((item) => {
-      const { title, src, id } = item;
-      return (
-        <section className="image-card" key={id}>
-          <h2 className="image-card__title">{title}</h2>
-          <button className= { classNames }>Delete</button>
-          <img
-            className="image-card__pic"
-            alt={title}
-            src={src}
-            onClick={ this.onImageClick }
-            />
-        </section>
-      )
-    });
-
     return (
-      <>
-      { element }
-      </>
+
+      <section className="image-card">
+        <h2 className="image-card__title">{this.props.title}</h2>
+        {this.state.showButton ? <button className= "button button--delete" id={this.props.id} onClick={() => this.props.delete(this.props.id)}>Delete</button> : null}
+        <img
+          className="image-card__pic"
+          alt={this.props.title}
+          src={this.props.src}
+          onClick={ this.onImageClick }
+        />
+      </section>
     );
   }
 };

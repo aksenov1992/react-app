@@ -39,18 +39,37 @@ export default class Page extends Component {
 
       return {
         cardData: newData,
-        show: this.showPopUp
       }
     });
   };
 
+  deleteItem = (id) => {
+    this.setState(({ cardData }) => {
+      const idArr = cardData.findIndex((elem) => elem.id === id);
+
+      const newData = [
+        ...cardData.slice(0, idArr),
+        ...cardData.slice(idArr + 1)
+      ];
+
+      return {
+        cardData: newData,
+      };
+    });
+  };
+
   render() {
+    const elements = this.state.cardData.map((item) => {
+      return (
+          <ImageCard title={item.title} src={item.src} id={item.id} key={item.id} delete={this.deleteItem}/>
+      );
+  });
 
     return (
       <>
         <HeaderPage />
         <button className="button button--new" onClick= {this.showPopUp} >new</button>
-        <ImageCard cards={this.state}/>
+        { elements }
         { this.state.show ? <PopUp show={this.showPopUp} add={this.addCard}/> : null }
       </>
     )

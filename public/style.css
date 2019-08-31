@@ -59,7 +59,6 @@
 }
 
 .button--delete {
-  display: none;
   position: absolute;
   top: 49px;
   height: 192px;
