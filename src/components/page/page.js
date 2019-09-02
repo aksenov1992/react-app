@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 
 
-import HeaderPage from '../header-page';
-import ImageCard from '../image-card';
-import PopUp from '../pop-up';
+import HeaderPage from '../header-page/header-page';
+import ImageCard from '../image-card/image-card';
+import PopUp from '../pop-up/pop-up';
 
 export default class Page extends Component {
 
@@ -39,22 +39,17 @@ export default class Page extends Component {
       ];
 
       return {
-        cardData: newData,
+        cardData: newData
       }
     });
   };
 
   deleteItem = (id) => {
     this.setState(({ cardData }) => {
-      const idArr = cardData.findIndex((elem) => elem.id === id);
-
-      const newData = [
-        ...cardData.slice(0, idArr),
-        ...cardData.slice(idArr + 1)
-      ];
+      const newData = cardData.filter((elem) => elem.id !== id);
 
       return {
-        cardData: newData,
+        cardData: newData
       };
     });
   };

@@ -5,7 +5,7 @@ import './image-card.css';
 export default class ImageCard extends Component {
 
   state = {
-    showButton: false
+    showButton: window.innerWidth > 750
   }
 
   onImageClick = () => {
@@ -14,13 +14,18 @@ export default class ImageCard extends Component {
     });
   };
 
-  componentDidMount() {
-    this.setWindowsize();
-  };
-  setWindowsize = () => {
-    if (window.innerWidth > 750){
-      this.onImageClick();
+  toggleButton = () => {
+    if (window.innerWidth < 750) {
+      this.setState({
+        showButton: false
+      })
+    } else {
+      this.onImageClick()
     }
+  };
+
+  componentDidMount() {
+    window.addEventListener('resize', this.toggleButton)
   };
 
   render() {
@@ -28,8 +33,10 @@ export default class ImageCard extends Component {
     return (
 
       <section className="image-card">
-        <h2 className="image-card__title">{this.props.title}</h2>
-        {this.state.showButton ? <button className= "button button--delete" id={this.props.id} onClick={() => this.props.delete(this.props.id)}>Delete</button> : null}
+        <div className="image-card__header">
+          <h2 className="image-card__title">{this.props.title}</h2>
+          {this.state.showButton ? <button className= "button button--delete" id={this.props.id} onClick={() => this.props.delete(this.props.id)}>Delete</button> : null}
+        </div>
         <img
           className="image-card__pic"
           alt={this.props.title}

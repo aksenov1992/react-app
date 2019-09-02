@@ -8,8 +8,11 @@
   margin-bottom: 40px;
 }
 
-.image-card__title {
+.image-card__header {
   border: 1px solid #979797;
+}
+
+.image-card__title {
   text-align: center;
   padding-top: 16px;
   padding-bottom: 15px;
@@ -21,6 +24,7 @@
 
 .button--delete {
   position: absolute;
+  width: 275px;
   top: 49px;
   height: 192px;
   text-transform: none;
@@ -36,14 +40,25 @@
     margin-bottom: 50px;
   }
 
+  .image-card__header {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .image-card__title {
+    font-size: 17px;
+  }
   .image-card__pic {
     height: 375px;
   }
 
   .button--delete {
     position: static;
-    height: auto;
-    width: auto;
+    height: unset;
+    width: unset;
+    margin: unset;
     background-color: transparent;
   }
 }
